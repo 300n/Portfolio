@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Maison du Noyer — Meubles en Bois Massif</title>
+  <meta name="description" content="La Maison du Noyer — Artisans marocains du bois de noyer massif. Tables, salons, cuisines, lits et portes sur mesure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    /* ─────── TOKENS ─────── */
+    :root {
+      --white:      #FFFFFF;
+      --warm-white: #FAF8F5;
+      --cream:      #F3EDE4;
+      --cream-dark: #E8DED2;
+      --walnut:     #5C3D1E;
+      --walnut-mid: #8B6635;
+      --walnut-lt:  #C4946A;
+      --gold:       #A67C3D;
+      --ink:        #1A1008;
+      --ink-mid:    #3D2C1A;
+      --text-muted: #7A6553;
+      --text-light: #A89880;
+      --border:     #E2D8CD;
+      --border-lt:  #EDE8E2;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Inter', -apple-system, sans-serif;
+      --ease:       cubic-bezier(0.25, 0, 0.1, 1);
+      --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+      --max-w:      1320px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; touch-action: manipulation; }
+
+    /* ─────── NAV ─────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      transition: background 300ms, border-color 300ms, box-shadow 300ms;
+      background: transparent;
+    }
+    .nav.scrolled {
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border-lt);
+      box-shadow: 0 2px 20px rgba(90,50,20,0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--walnut-mid); font-style: italic; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+      margin: 0 auto;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      transition: color 200ms;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--walnut-mid);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 250ms var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--walnut); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a:focus-visible { outline: 2px solid var(--walnut-mid); outline-offset: 4px; }
+    .nav-right { display: flex; align-items: center; gap: 16px; white-space: nowrap; }
+    .nav-wa {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--walnut-mid);
+      transition: color 200ms;
+    }
+    .nav-wa:hover { color: var(--walnut); }
+    .nav-wa svg { flex-shrink: 0; }
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    .nav-burger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: transform 300ms, opacity 200ms; }
+
+    /* ─────── HERO ─────── */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px 80px 48px;
+      background: var(--white);
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--walnut-mid);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--walnut-mid);
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(52px, 6vw, 88px);
+      font-weight: 600;
+      line-height: 1.02;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--walnut-mid);
+    }
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 420px;
+      margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 17px 32px;
+      border: 1.5px solid var(--ink);
+      transition: background 200ms, color 200ms, transform 200ms var(--ease-out);
+    }
+    .btn-primary:hover { background: var(--walnut); border-color: var(--walnut); transform: translateY(-2px); }
+    .btn-primary:focus-visible { outline: 2px solid var(--walnut-mid); outline-offset: 3px; }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 17px 32px;
+      border: 1.5px solid var(--border);
+      transition: border-color 200ms, color 200ms, transform 200ms var(--ease-out);
+    }
+    .btn-outline:hover { border-color: var(--walnut-mid); color: var(--walnut); transform: translateY(-2px); }
+    .btn-outline:focus-visible { outline: 2px solid var(--walnut-mid); outline-offset: 3px; }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-lt);
+    }
+    .hero-stat-num {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .hero-visual {
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 8s var(--ease);
+      mix-blend-mode: multiply;
+    }
+    .hero-visual:hover .hero-img { transform: scale(1.04); }
+    .hero-badge {
+      position: absolute;
+      bottom: 40px; right: 40px;
+      background: var(--walnut);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 20px;
+    }
+
+    /* ─────── SECTION WRAPPER ─────── */
+    .section { padding: 96px 48px; }
+    .section--cream { background: var(--warm-white); }
+    .section--dark { background: var(--ink); color: var(--white); }
+    .container { max-width: var(--max-w); margin: 0 auto; }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--walnut-mid);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--walnut-mid);
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+    }
+    .section-title em { font-style: italic; color: var(--walnut-mid); }
+    .section--dark .section-title { color: var(--white); }
+    .section--dark .section-eyebrow { color: var(--walnut-lt); }
+    .section--dark .section-eyebrow::before { background: var(--walnut-lt); }
+
+    /* ─────── CATEGORIES ─────── */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2px;
+    }
+    .cat-card {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--cream);
+    }
+    .cat-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 500ms var(--ease-out);
+    }
+    .cat-card:hover img { transform: scale(1.08); }
+    .cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,16,8,0.75) 0%, rgba(26,16,8,0.15) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 18px;
+      transition: background 300ms;
+    }
+    .cat-card:hover .cat-overlay { background: linear-gradient(to top, rgba(26,16,8,0.85) 0%, rgba(26,16,8,0.25) 60%, transparent 100%); }
+    .cat-name {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .cat-count {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+    .cat-arrow {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translate(4px,-4px);
+      transition: opacity 250ms, transform 250ms var(--ease-out), background 200ms;
+    }
+    .cat-card:hover .cat-arrow { opacity: 1; transform: translate(0,0); background: rgba(255,255,255,0.15); }
+
+    /* ─────── PRODUCT FILTERS ─────── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+      overflow-x: auto;
+    }
+    .filter-btn {
+      background: none;
+      border: none;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 14px 24px;
+      position: relative;
+      white-space: nowrap;
+      transition: color 200ms;
+    }
+    .filter-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 24px; right: 24px;
+      height: 2px;
+      background: var(--walnut-mid);
+      transform: scaleX(0);
+      transition: transform 250ms var(--ease-out);
+    }
+    .filter-btn.active { color: var(--ink); }
+    .filter-btn.active::after { transform: scaleX(1); }
+    .filter-btn:hover { color: var(--walnut); }
+    .filter-btn:focus-visible { outline: 2px solid var(--walnut-mid); outline-offset: -2px; }
+
+    /* ─────── PRODUCTS GRID ─────── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .product-card {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      background: var(--warm-white);
+      transition: opacity 300ms, transform 300ms var(--ease-out);
+    }
+    .product-card.hidden { display: none; }
+    .product-img-wrap {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--warm-white);
+    }
+    .product-card--blend .product-img-wrap { background: var(--white); }
+    .product-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 500ms var(--ease-out);
+    }
+    .product-card--blend .product-img {
+      mix-blend-mode: multiply;
+      object-fit: contain;
+      padding: 16px;
+    }
+    .product-card:hover .product-img { transform: scale(1.06); }
+    .product-card--blend:hover .product-img { transform: scale(1.04); }
+    .product-quick {
+      position: absolute;
+      bottom: 16px; right: 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 220ms, transform 220ms var(--ease-out), background 150ms;
+    }
+    .product-card:hover .product-quick { opacity: 1; transform: translateY(0); }
+    .product-quick:hover { background: var(--ink); color: var(--white); }
+    .product-info {
+      padding: 20px 22px 24px;
+      background: var(--white);
+      border-top: 1px solid var(--border-lt);
+    }
+    .product-cat {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--walnut-mid);
+      margin-bottom: 6px;
+    }
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      margin-bottom: 6px;
+      transition: color 200ms;
+    }
+    .product-card:hover .product-name { color: var(--walnut-mid); }
+    .product-detail { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--walnut);
+    }
+
+    /* ─────── FEATURED (3 hero products) ─────── */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 2px;
+    }
+    .featured-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--warm-white);
+    }
+    .featured-card:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+    .featured-card:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .featured-card:nth-child(3) { grid-column: 2; grid-row: 2; }
+    .featured-img {
+      width: 100%;
+      object-fit: cover;
+      transition: transform 600ms var(--ease);
+      display: block;
+    }
+    .featured-card:nth-child(1) .featured-img { height: 100%; min-height: 580px; }
+    .featured-card:nth-child(2) .featured-img,
+    .featured-card:nth-child(3) .featured-img { height: 290px; }
+    .featured-card:hover .featured-img { transform: scale(1.05); }
+    .featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,16,8,0.8) 0%, rgba(26,16,8,0.1) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      transition: background 300ms;
+    }
+    .featured-card:hover .featured-overlay { background: linear-gradient(to top, rgba(26,16,8,0.9) 0%, rgba(26,16,8,0.2) 60%, transparent 100%); }
+    .featured-cat {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--walnut-lt);
+      margin-bottom: 8px;
+    }
+    .featured-name {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .featured-card:nth-child(1) .featured-name { font-size: 32px; }
+    .featured-price {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      transition: color 200ms;
+    }
+    .featured-card:hover .featured-price { color: var(--walnut-lt); }
+    .featured-btn {
+      position: absolute;
+      top: 24px; right: 24px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 250ms, transform 250ms var(--ease-out), background 150ms;
+      backdrop-filter: blur(4px);
+    }
+    .featured-card:hover .featured-btn { opacity: 1; transform: translateY(0); }
+
+    /* ─────── PACK PROMO ─────── */
+    .pack-section {
+      padding: 96px 48px;
+      background: var(--cream);
+    }
+    .pack-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .pack-text { }
+    .pack-title {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .pack-title em { font-style: italic; color: var(--walnut-mid); }
+    .pack-desc {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+    .pack-offers {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .pack-offer {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      transition: border-color 200ms;
+    }
+    .pack-offer:hover { border-color: var(--walnut-lt); }
+    .pack-offer-dot {
+      width: 8px; height: 8px;
+      background: var(--walnut-mid);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .pack-offer-text { flex: 1; }
+    .pack-offer-title { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+    .pack-offer-price { font-family: var(--font-serif); font-size: 20px; font-weight: 600; color: var(--walnut); }
+    .pack-offer-detail { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .pack-img-wrap {
+      position: relative;
+    }
+    .pack-img {
+      width: 100%;
+      border: 1px solid var(--border);
+      mix-blend-mode: multiply;
+    }
+
+    /* ─────── SAVOIR-FAIRE ─────── */
+    .sf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .sf-img-wrap {
+      position: relative;
+    }
+    .sf-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+    .sf-img-badge {
+      position: absolute;
+      bottom: -24px; right: -24px;
+      width: 140px; height: 140px;
+      background: var(--walnut);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+    }
+    .sf-badge-num {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1;
+    }
+    .sf-badge-text {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-top: 4px;
+    }
+    .sf-content { padding-bottom: 24px; }
+    .sf-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .sf-value { border-left: 2px solid var(--walnut-lt); padding-left: 16px; }
+    .sf-value-title { font-family: var(--font-serif); font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+    .sf-value-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ─────── CONTACT ─────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 32px; }
+    .contact-block { }
+    .contact-block-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--walnut-lt);
+      margin-bottom: 8px;
+    }
+    .contact-block-value {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .contact-block-detail { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: 2px;
+      transition: background 150ms, transform 200ms;
+      width: fit-content;
+      margin-top: 8px;
+    }
+    .wa-btn:hover { background: #1EB556; transform: translateY(-2px); }
+    .wa-btn:focus-visible { outline: 2px solid #25D366; outline-offset: 3px; }
+    .contact-form-wrap {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 40px;
+    }
+    .form-title {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .form-stack { display: flex; flex-direction: column; gap: 16px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .form-input {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 150ms, background 150ms;
+      min-height: 48px;
+      width: 100%;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-input:focus { border-color: var(--walnut-lt); background: rgba(255,255,255,0.09); }
+    textarea.form-input { min-height: 120px; resize: vertical; }
+    .form-error { font-size: 11px; color: #FCA5A5; display: none; }
+    .form-error.visible { display: block; }
+    select.form-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none'%3E%3Cpath stroke='rgba(255,255,255,0.4)' stroke-width='2' d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+    select.form-input option { background: #1A1008; color: #FFFFFF; }
+    .btn-submit {
+      background: var(--walnut-lt);
+      color: var(--white);
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      cursor: pointer;
+      transition: background 200ms, transform 200ms var(--ease-out);
+      min-height: 52px;
+      align-self: flex-start;
+      width: 100%;
+    }
+    .btn-submit:hover { background: var(--walnut-mid); transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-submit:focus-visible { outline: 2px solid var(--walnut-lt); outline-offset: 3px; }
+
+    /* ─────── FOOTER ─────── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 56px 48px 32px;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .footer-logo {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .footer-logo span { color: var(--walnut-lt); font-style: italic; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.7; max-width: 220px; }
+    .footer-col-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 11px; list-style: none; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.55); transition: color 150ms; }
+    .footer-links a:hover { color: var(--walnut-lt); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+    .footer-insta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      transition: color 150ms;
+    }
+    .footer-insta:hover { color: var(--walnut-lt); }
+
+    /* ─────── LIGHTBOX ─────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(26,16,8,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 250ms;
+      padding: 24px;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-inner {
+      background: var(--white);
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      max-height: 90vh;
+    }
+    .lightbox-img-wrap {
+      background: var(--warm-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .lightbox-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 70vh;
+    }
+    .lightbox-img--blend {
+      mix-blend-mode: multiply;
+      object-fit: contain;
+      padding: 32px;
+    }
+    .lightbox-content {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+    .lightbox-cat {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--walnut-mid);
+      margin-bottom: 12px;
+    }
+    .lightbox-name {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .lightbox-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .lightbox-detail {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-lt);
+    }
+    .lightbox-price {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--walnut);
+      margin-bottom: 24px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 40px; height: 40px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 150ms, transform 200ms;
+    }
+    .lightbox-close:hover { background: var(--ink); color: var(--white); transform: rotate(90deg); }
+    .lightbox-close:focus-visible { outline: 2px solid var(--walnut-mid); outline-offset: 2px; }
+
+    /* ─────── MOBILE NAV DRAWER ─────── */
+    .mobile-drawer {
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--white);
+      z-index: 300;
+      transform: translateX(-100%);
+      transition: transform 300ms var(--ease-out);
+      padding: 80px 36px 40px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow-y: auto;
+    }
+    .mobile-drawer.open { transform: translateX(0); }
+    .mobile-nav-link {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-lt);
+      display: block;
+      transition: color 150ms;
+    }
+    .mobile-nav-link:hover { color: var(--walnut-mid); }
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26,16,8,0.5);
+      z-index: 250;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: all; }
+
+    /* ─────── TOAST ─────── */
+    .toast-container {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .toast {
+      background: var(--ink);
+      color: var(--white);
+      border-left: 3px solid var(--walnut-lt);
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      max-width: 320px;
+      transform: translateX(360px);
+      transition: transform 300ms var(--ease-out);
+      cursor: pointer;
+    }
+    .toast.show { transform: translateX(0); }
+
+    /* ─────── REVEAL ANIMATIONS ─────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ─────── RESPONSIVE ─────── */
+    @media (max-width: 1100px) {
+      .categories-grid { grid-template-columns: repeat(3, 1fr); }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .featured-grid { grid-template-columns: 1fr; }
+      .featured-card:nth-child(1) { grid-column: 1; grid-row: 1; }
+      .featured-card:nth-child(2) { grid-column: 1; grid-row: 2; }
+      .featured-card:nth-child(3) { grid-column: 1; grid-row: 3; }
+      .featured-card:nth-child(1) .featured-img { height: 420px; }
+      .sf-grid { grid-template-columns: 1fr; gap: 48px; }
+      .sf-img-badge { right: 16px; bottom: 16px; }
+      .pack-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .lightbox-inner { grid-template-columns: 1fr; }
+      .lightbox-img-wrap { max-height: 40vh; }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 0 20px; }
+      .nav-links, .nav-wa { display: none; }
+      .nav-burger { display: flex; }
+      .section { padding: 64px 20px; }
+      .pack-section, .contact-section { padding: 64px 20px; }
+      footer { padding: 48px 20px 24px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-text { padding: 48px 20px; }
+      .hero-visual { min-height: 350px; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 24px; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .sf-values { grid-template-columns: 1fr; }
+      .lightbox-inner { grid-template-columns: 1fr; max-height: 95vh; overflow-y: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Skip link -->
+<a href="#main" style="position:fixed;top:-50px;left:16px;z-index:9999;background:var(--walnut);color:var(--white);font-size:12px;letter-spacing:1px;font-weight:600;text-transform:uppercase;padding:10px 18px;transition:top 150ms" onfocus="this.style.top='16px'" onblur="this.style.top='-50px'">Aller au contenu</a>
+
+<!-- ── NAV ── -->
+<nav class="nav" id="mainNav" role="navigation" aria-label="Navigation principale">
+  <a href="#" class="nav-logo" aria-label="La Maison du Noyer — accueil">
+    La Maison <span>du Noyer</span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#produits">Produits</a></li>
+    <li><a href="#pack">Pack Promo</a></li>
+    <li><a href="#savoir-faire">Savoir-faire</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://wa.me/212600000000" class="nav-wa" aria-label="Nous contacter sur WhatsApp">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-label="Menu principal">
+  <a href="#collections" class="mobile-nav-link">Collections</a>
+  <a href="#produits" class="mobile-nav-link">Produits</a>
+  <a href="#pack" class="mobile-nav-link">Pack Promo</a>
+  <a href="#savoir-faire" class="mobile-nav-link">Savoir-faire</a>
+  <a href="#contact" class="mobile-nav-link">Contact</a>
+  <div style="margin-top:32px">
+    <a href="https://wa.me/212600000000" class="wa-btn" style="width:100%;justify-content:center;margin-top:0" aria-label="WhatsApp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Nous contacter
+    </a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ── HERO ── -->
+<section class="hero" aria-label="Bienvenue chez La Maison du Noyer">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Artisans Marocains</p>
+    <h1 class="hero-title">
+      L'Art<br>
+      du <em>Noyer</em><br>
+      Massif
+    </h1>
+    <p class="hero-desc">
+      Depuis notre atelier, nous façonnons chaque pièce à la main en bois de noyer massif. Tables, cuisines, salons — du sur-mesure authentique au service de votre intérieur.
+    </p>
+    <div class="hero-actions">
+      <a href="#produits" class="btn-primary">
+        Découvrir la collection
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn-outline">Demander un devis</a>
+    </div>
+    <div class="hero-stats" aria-label="Chiffres clés">
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Noyer massif</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">Sur-mesure</div>
+        <div class="hero-stat-label">Chaque pièce</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">Maroc</div>
+        <div class="hero-stat-label">Fabriqué localement</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <img
+      src="noyer/img/table-luna-marbre.png"
+      alt=""
+      class="hero-img"
+      loading="eager"
+      width="800" height="900"
+    >
+    <span class="hero-badge">Nouvelle Collection</span>
+  </div>
+</section>
+
+<!-- ── COLLECTIONS ── -->
+<section class="section" id="collections" aria-labelledby="collections-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">Nos Univers</p>
+        <h2 class="section-title" id="collections-title">Explorez nos<br><em>Collections</em></h2>
+      </div>
+      <a href="#produits" class="btn-outline" style="margin-bottom:8px">Tout voir</a>
+    </div>
+    <div class="categories-grid" role="list" aria-label="Catégories de meubles">
+      <div class="cat-card reveal" role="listitem" tabindex="0" data-filter="tables" onclick="filterAndScroll('tables')" onkeydown="if(event.key==='Enter')filterAndScroll('tables')" aria-label="Tables & Salle à manger">
+        <img src="noyer/img/table-riviera.png" alt="Table en noyer massif" loading="lazy" width="400" height="600">
+        <div class="cat-overlay">
+          <div class="cat-name">Tables &amp; Salle à Manger</div>
+          <div class="cat-count">5 créations</div>
+        </div>
+        <div class="cat-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="cat-card reveal" role="listitem" tabindex="0" data-filter="salon" onclick="filterAndScroll('salon')" onkeydown="if(event.key==='Enter')filterAndScroll('salon')" aria-label="Salons & Bibliothèques">
+        <img src="noyer/img/bibliotheque-geo.png" alt="Bibliothèque géométrique en noyer" loading="lazy" width="400" height="600">
+        <div class="cat-overlay">
+          <div class="cat-name">Salons &amp; Bibliothèques</div>
+          <div class="cat-count">3 créations</div>
+        </div>
+        <div class="cat-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="cat-card reveal" role="listitem" tabindex="0" data-filter="cuisine" onclick="filterAndScroll('cuisine')" onkeydown="if(event.key==='Enter')filterAndScroll('cuisine')" aria-label="Cuisines">
+        <img src="noyer/img/cuisine-prestige.png" alt="Cuisine en noyer et marbre" loading="lazy" width="400" height="600">
+        <div class="cat-overlay">
+          <div class="cat-name">Cuisines</div>
+          <div class="cat-count">1 réalisation</div>
+        </div>
+        <div class="cat-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="cat-card reveal" role="listitem" tabindex="0" data-filter="chambre" onclick="filterAndScroll('chambre')" onkeydown="if(event.key==='Enter')filterAndScroll('chambre')" aria-label="Chambres">
+        <img src="noyer/img/lit-scultura.png" alt="Lit en noyer sculpté" loading="lazy" width="400" height="600">
+        <div class="cat-overlay">
+          <div class="cat-name">Chambres</div>
+          <div class="cat-count">1 création</div>
+        </div>
+        <div class="cat-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="cat-card reveal" role="listitem" tabindex="0" data-filter="buffets" onclick="filterAndScroll('buffets')" onkeydown="if(event.key==='Enter')filterAndScroll('buffets')" aria-label="Buffets & Rangements">
+        <img src="noyer/img/buffet-arrondi.png" alt="Buffet arrondi en noyer" loading="lazy" width="400" height="600">
+        <div class="cat-overlay">
+          <div class="cat-name">Buffets &amp; Rangements</div>
+          <div class="cat-count">1 création</div>
+        </div>
+        <div class="cat-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+      <div class="cat-card reveal" role="listitem" tabindex="0" data-filter="portes" onclick="filterAndScroll('portes')" onkeydown="if(event.key==='Enter')filterAndScroll('portes')" aria-label="Portes Intérieures">
+        <img src="noyer/img/portes-chevron.png" alt="Portes chevron en noyer" loading="lazy" width="400" height="600">
+        <div class="cat-overlay">
+          <div class="cat-name">Portes Intérieures</div>
+          <div class="cat-count">1 création</div>
+        </div>
+        <div class="cat-arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURED ── -->
+<section class="section section--cream" aria-labelledby="featured-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">Pièces Maîtresses</p>
+        <h2 class="section-title" id="featured-title">Nos créations<br><em>phares</em></h2>
+      </div>
+    </div>
+    <div class="featured-grid" role="list" aria-label="Produits vedettes">
+      <article class="featured-card reveal-left" role="listitem" tabindex="0" onclick="openLightbox(7)" onkeydown="if(event.key==='Enter')openLightbox(7)" aria-label="Lit Scultura — lit sculpté en noyer">
+        <img src="noyer/img/lit-scultura.png" alt="Lit Scultura en noyer massif avec tête de lit sculptée en cubes" class="featured-img" loading="lazy" width="700" height="900">
+        <div class="featured-overlay">
+          <div class="featured-cat">Chambre</div>
+          <div class="featured-name">Lit Scultura</div>
+          <div class="featured-price">Noyer massif sculpté — Sur devis</div>
+        </div>
+        <button class="featured-btn" aria-label="Voir les détails du Lit Scultura">Voir les détails</button>
+      </article>
+      <article class="featured-card reveal-right" role="listitem" tabindex="0" onclick="openLightbox(4)" onkeydown="if(event.key==='Enter')openLightbox(4)" aria-label="Meuble TV Lattes — habillage mural en noyer">
+        <img src="noyer/img/meuble-tv-lattes.png" alt="Meuble TV avec habillage mural en lattes de noyer" class="featured-img" loading="lazy" width="700" height="400">
+        <div class="featured-overlay">
+          <div class="featured-cat">Salon</div>
+          <div class="featured-name">Meuble TV Lattes</div>
+          <div class="featured-price">Habillage mural complet — Sur devis</div>
+        </div>
+        <button class="featured-btn" aria-label="Voir les détails du Meuble TV Lattes">Voir les détails</button>
+      </article>
+      <article class="featured-card reveal-right" role="listitem" tabindex="0" onclick="openLightbox(5)" onkeydown="if(event.key==='Enter')openLightbox(5)" aria-label="Cuisine Prestige — cuisine complète en noyer">
+        <img src="noyer/img/cuisine-prestige.png" alt="Cuisine complète en noyer et marbre blanc" class="featured-img" loading="lazy" width="700" height="400">
+        <div class="featured-overlay">
+          <div class="featured-cat">Cuisine</div>
+          <div class="featured-name">Cuisine Prestige</div>
+          <div class="featured-price">Noyer & marbre — Sur devis</div>
+        </div>
+        <button class="featured-btn" aria-label="Voir les détails de la Cuisine Prestige">Voir les détails</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── ALL PRODUCTS ── -->
+<section class="section" id="produits" aria-labelledby="produits-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">Nos Créations</p>
+        <h2 class="section-title" id="produits-title">Toute la<br><em>Collection</em></h2>
+      </div>
+    </div>
+
+    <div class="filter-bar" role="tablist" aria-label="Filtrer par catégorie">
+      <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Tout</button>
+      <button class="filter-btn" data-filter="tables" role="tab" aria-selected="false">Tables</button>
+      <button class="filter-btn" data-filter="salon" role="tab" aria-selected="false">Salon</button>
+      <button class="filter-btn" data-filter="cuisine" role="tab" aria-selected="false">Cuisine</button>
+      <button class="filter-btn" data-filter="chambre" role="tab" aria-selected="false">Chambre</button>
+      <button class="filter-btn" data-filter="buffets" role="tab" aria-selected="false">Buffets</button>
+      <button class="filter-btn" data-filter="portes" role="tab" aria-selected="false">Portes</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid" role="list" aria-label="Catalogue des meubles">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ── PACK PROMO ── -->
+<section class="pack-section" id="pack" aria-labelledby="pack-title">
+  <div class="pack-inner">
+    <div class="pack-text reveal-left">
+      <p class="section-eyebrow">Offre Spéciale</p>
+      <h2 class="pack-title" id="pack-title">
+        Composez votre<br>
+        salle à manger<br>
+        <em>complète</em>
+      </h2>
+      <p class="pack-desc">
+        Nos packs salle à manger associent table, chaises et buffet coordonnés en noyer massif. Un ensemble cohérent, livré clé en main, à prix négocié.
+      </p>
+      <div class="pack-offers" aria-label="Offres disponibles">
+        <div class="pack-offer">
+          <div class="pack-offer-dot" aria-hidden="true"></div>
+          <div class="pack-offer-text">
+            <div class="pack-offer-title">Table 2m · 6 Chaises</div>
+            <div class="pack-offer-price">16 000 DH</div>
+            <div class="pack-offer-detail">Avec buffet assorti : 21 000 DH</div>
+          </div>
+        </div>
+        <div class="pack-offer">
+          <div class="pack-offer-dot" aria-hidden="true"></div>
+          <div class="pack-offer-text">
+            <div class="pack-offer-title">Table 2,20m · 8 Chaises</div>
+            <div class="pack-offer-price">18 000 DH</div>
+            <div class="pack-offer-detail">Avec buffet assorti : 23 000 DH</div>
+          </div>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary">Demander ce pack</a>
+    </div>
+    <div class="reveal-right">
+      <img
+        src="noyer/img/pack-promo.png"
+        alt="Pack salle à manger complet : buffets, chaises et tables en noyer massif"
+        class="pack-img"
+        loading="lazy"
+        width="800" height="700"
+      >
+    </div>
+  </div>
+</section>
+
+<!-- ── SAVOIR-FAIRE ── -->
+<section class="section" id="savoir-faire" aria-labelledby="sf-title">
+  <div class="container">
+    <div class="sf-grid">
+      <div class="sf-img-wrap reveal-left">
+        <img
+          src="noyer/img/salon-bibliotheque.png"
+          alt="Salon marocain avec bibliothèque géométrique en noyer, éclairage LED encastré"
+          class="sf-img-main"
+          loading="lazy"
+          width="700" height="880"
+        >
+        <div class="sf-img-badge" aria-label="Plus de 10 ans d'expérience">
+          <div class="sf-badge-num">10+</div>
+          <div class="sf-badge-text">Ans d'expérience</div>
+        </div>
+      </div>
+      <div class="sf-content reveal-right">
+        <p class="section-eyebrow">Notre Histoire</p>
+        <h2 class="section-title" id="sf-title">L'excellence<br>du <em>bois marocain</em></h2>
+        <p style="font-size:15px;line-height:1.85;color:var(--text-muted);margin-top:20px;margin-bottom:20px">
+          La Maison du Noyer est née d'une passion pour le bois de noyer — un bois rare, dense et au grain exceptionnel. Chaque pièce est conçue dans notre atelier marocain par des artisans qui transmettent leur savoir-faire de génération en génération.
+        </p>
+        <p style="font-size:15px;line-height:1.85;color:var(--text-muted);margin-bottom:0">
+          Nous travaillons uniquement le bois massif, sans aggloméré ni placage. Chaque veine est unique, chaque assemblage est réalisé à la main. Le résultat : des meubles qui durent une vie et embellissent avec le temps.
+        </p>
+        <div class="sf-values" aria-label="Nos valeurs">
+          <div class="sf-value">
+            <div class="sf-value-title">Bois 100% massif</div>
+            <div class="sf-value-desc">Aucun aggloméré ni placage. Noyer véritable, durabilité garantie.</div>
+          </div>
+          <div class="sf-value">
+            <div class="sf-value-title">Sur mesure</div>
+            <div class="sf-value-desc">Chaque meuble est conçu selon vos dimensions et vos goûts.</div>
+          </div>
+          <div class="sf-value">
+            <div class="sf-value-title">Finitions soignées</div>
+            <div class="sf-value-desc">Huile naturelle ou vernis mat, selon votre préférence.</div>
+          </div>
+          <div class="sf-value">
+            <div class="sf-value-title">Livraison & pose</div>
+            <div class="sf-value-desc">Nous assurons la livraison et l'installation chez vous.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section section--dark" id="contact" aria-labelledby="contact-title" style="padding:96px 48px">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <p class="section-eyebrow">Nous Contacter</p>
+        <h2 class="section-title" id="contact-title">Parlons de<br><em>votre projet</em></h2>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <div class="contact-block">
+          <div class="contact-block-label">WhatsApp &amp; Téléphone</div>
+          <div class="contact-block-value">+212 6 00 00 00 00</div>
+          <div class="contact-block-detail">Disponible 7j/7 · Réponse rapide</div>
+          <a href="https://wa.me/212600000000" class="wa-btn" aria-label="Ouvrir WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Discuter sur WhatsApp
+          </a>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Instagram</div>
+          <div class="contact-block-value">@lamaisonduno yer</div>
+          <div class="contact-block-detail">Suivez nos dernières réalisations</div>
+        </div>
+        <div class="contact-block">
+          <div class="contact-block-label">Délais</div>
+          <div class="contact-block-value">4 à 8 semaines</div>
+          <div class="contact-block-detail">Selon la complexité de la pièce</div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal-right">
+        <h3 class="form-title">Envoyer un message</h3>
+        <form class="form-stack" id="contactForm" novalidate aria-label="Formulaire de contact">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" for="cf-nom">Prénom &amp; Nom *</label>
+              <input class="form-input" type="text" id="cf-nom" name="nom" autocomplete="name" required placeholder="Votre nom" aria-required="true">
+              <span class="form-error" id="err-nom" role="alert">Ce champ est requis</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cf-tel">Téléphone *</label>
+              <input class="form-input" type="tel" id="cf-tel" name="tel" autocomplete="tel" required placeholder="+212 6 XX XX XX XX" aria-required="true">
+              <span class="form-error" id="err-tel" role="alert">Ce champ est requis</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-ville">Ville</label>
+            <input class="form-input" type="text" id="cf-ville" name="ville" autocomplete="address-level2" placeholder="Casablanca, Marrakech…">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-produit">Produit souhaité</label>
+            <select class="form-input" id="cf-produit" name="produit">
+              <option value="">Sélectionner un type de meuble</option>
+              <option value="table">Table à manger</option>
+              <option value="salon">Salon / Bibliothèque</option>
+              <option value="cuisine">Cuisine complète</option>
+              <option value="chambre">Chambre / Lit</option>
+              <option value="buffet">Buffet / Enfilade</option>
+              <option value="porte">Porte intérieure</option>
+              <option value="pack">Pack salle à manger</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cf-message">Votre projet *</label>
+            <textarea class="form-input" id="cf-message" name="message" required placeholder="Décrivez votre projet, dimensions souhaitées, couleurs, délais…" aria-required="true"></textarea>
+            <span class="form-error" id="err-message" role="alert">Ce champ est requis</span>
+          </div>
+          <button type="submit" class="btn-submit" id="formSubmit">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">La Maison <span>du Noyer</span></div>
+        <p class="footer-tagline">Artisans marocains du bois de noyer massif. Meubles sur mesure depuis plus de 10 ans.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links" role="list">
+          <li><a href="#collections">Collections</a></li>
+          <li><a href="#produits">Produits</a></li>
+          <li><a href="#pack">Pack Promo</a></li>
+          <li><a href="#savoir-faire">Savoir-faire</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Catégories</div>
+        <ul class="footer-links" role="list">
+          <li><a href="#produits">Tables</a></li>
+          <li><a href="#produits">Salons</a></li>
+          <li><a href="#produits">Cuisines</a></li>
+          <li><a href="#produits">Chambres</a></li>
+          <li><a href="#produits">Portes</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links" role="list">
+          <li><a href="https://wa.me/212600000000">WhatsApp</a></li>
+          <li><a href="tel:+212600000000">+212 6 00 00 00 00</a></li>
+          <li><a href="https://instagram.com">Instagram</a></li>
+          <li><a href="#contact">Devis gratuit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 La Maison du Noyer · Tous droits réservés · Maroc</p>
+      <a href="https://instagram.com" class="footer-insta" aria-label="La Maison du Noyer sur Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @lamaisonduno yer
+      </a>
+    </div>
+  </div>
+</footer>
+</main>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Détail du produit">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">✕</button>
+    <div class="lightbox-img-wrap">
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+    </div>
+    <div class="lightbox-content">
+      <div>
+        <div class="lightbox-cat" id="lightboxCat"></div>
+        <h2 class="lightbox-name" id="lightboxName"></h2>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+        <div class="lightbox-detail" id="lightboxDetail"></div>
+        <div class="lightbox-price" id="lightboxPrice"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="#contact" class="btn-primary" id="lightboxDevis" onclick="closeLightbox();setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),100)">
+          Demander un devis
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/212600000000" class="wa-btn" style="margin-top:0;width:100%;justify-content:center" aria-label="Contacter sur WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast-container" aria-live="polite" aria-atomic="true" id="toastContainer"></div>
+
+<script>
+/* ─────────────────── DATA ─────────────────── */
+const products = [
+  {
+    id: 1, name: 'Table Riviera', category: 'tables', catLabel: 'Tables & Salle à Manger',
+    img: 'noyer/img/table-riviera.png',
+    alt: 'Table Riviera en noyer massif avec plateau arrondi et pieds en lamelles sculptées, 6 chaises tissu blanc',
+    desc: 'Table en noyer massif au plateau arrondi aux bords doucissés. Les pieds en lamelles sculpées révèlent toute la maîtrise de nos artisans. Livré avec 6 chaises en tissu boucle blanc.',
+    detail: '6 places · Noyer massif · Finition huile naturelle · Dimensions sur demande',
+    price: 'À partir de 16 000 DH',
+    blend: true
+  },
+  {
+    id: 2, name: 'Table Luna Marbre', category: 'tables', catLabel: 'Tables & Salle à Manger',
+    img: 'noyer/img/table-luna-marbre.png',
+    alt: 'Table ovale Luna avec plateau en marbre naturel et pieds en noyer lamelles, 8 chaises tissu gris',
+    desc: 'Table ovale majestueuse alliant le marbre naturel et la chaleur du noyer. Le plateau en marbre repose sur une base sculptée en lamelles de noyer. Accompagnée de 8 chaises tissu gris à structure noyer.',
+    detail: '8 places · Marbre & noyer massif · Pieds lamelles sculptées',
+    price: 'À partir de 18 000 DH',
+    blend: true
+  },
+  {
+    id: 3, name: 'Table Trunk Verre', category: 'tables', catLabel: 'Tables & Salle à Manger',
+    img: 'noyer/img/table-verre-tronc.png',
+    alt: 'Table ronde avec plateau en verre et pied en tronc d\'arbre naturel, chaises noyer tissu blanc et moutarde',
+    desc: 'Pièce d\'exception : un tronc d\'arbre brut devient le pied d\'une table à plateau en verre trempé. Chaque exemplaire est unique. Chaises en noyer à tissu bicolore blanc et moutarde.',
+    detail: '4 à 6 places · Tronc naturel · Verre trempé · Pièce unique',
+    price: 'Sur devis (pièce unique)',
+    blend: true
+  },
+  {
+    id: 4, name: 'Table Ovale Grand Noyer', category: 'tables', catLabel: 'Tables & Salle à Manger',
+    img: 'noyer/img/table-ovale-grand.png',
+    alt: 'Grande table ovale en noyer pour 10 personnes avec chaises en cuir et tissu marron',
+    desc: 'Table de réception pour grandes occasions. Plateau ovale en noyer massif, pieds en lamelles, 10 chaises à structure noyer et assise cuir/tissu. Parfaite pour les grandes salles à manger.',
+    detail: '10 places · Noyer massif · Grande dimension',
+    price: 'À partir de 22 000 DH',
+    blend: false
+  },
+  {
+    id: 5, name: 'Table Ronde La Maison', category: 'tables', catLabel: 'Tables & Salle à Manger',
+    img: 'noyer/img/table-ronde-maison.png',
+    alt: 'Table ronde en noyer avec chaises tissu blanc, buffet mosaïque noyer en arrière-plan',
+    desc: 'Table ronde en noyer massif avec un piètement sculptural aux lamelles rayonnantes. Accompagnée de 4 à 6 chaises tissu blanc à structure noyer. Un ensemble harmonieux et chaleureux.',
+    detail: '4 à 6 places · Noyer massif · Piétement sculpté',
+    price: 'À partir de 14 000 DH',
+    blend: true
+  },
+  {
+    id: 6, name: 'Salon Marocain Noyer', category: 'salon', catLabel: 'Salon & Séjour',
+    img: 'noyer/img/salon-bibliotheque.png',
+    alt: 'Salon marocain complet avec bibliothèque géométrique en noyer, canapé marocain et éclairage LED',
+    desc: 'Aménagement complet d\'un salon marocain : bibliothèque séparatrice en noyer, canapé marocain coordonné et habillage plafond avec éclairage LED encastré. Une réalisation clé en main.',
+    detail: 'Bibliothèque + salon coordonné · Réalisation complète',
+    price: 'Sur devis',
+    blend: false
+  },
+  {
+    id: 7, name: 'Bibliothèque Géo', category: 'salon', catLabel: 'Salon & Séjour',
+    img: 'noyer/img/bibliotheque-geo.png',
+    alt: 'Bibliothèque géométrique séparatrice de pièce en noyer massif avec étagères décalées',
+    desc: 'Séparateur de pièce en noyer massif aux étagères géométriques décalées. Crée une séparation visuelle tout en laissant passer la lumière. Peut être réalisé à la hauteur souhaitée.',
+    detail: 'Noyer massif · Dimensions sur mesure · Peut servir de séparateur',
+    price: 'À partir de 8 000 DH',
+    blend: true
+  },
+  {
+    id: 8, name: 'Meuble TV Lattes', category: 'salon', catLabel: 'Salon & Séjour',
+    img: 'noyer/img/meuble-tv-lattes.png',
+    alt: 'Habillage mural TV en noyer avec lattes verticales et meuble TV encastré à portes coulissantes',
+    desc: 'Habillage mural complet en noyer intégrant un meuble TV encastré avec portes coulissantes. Les lattes verticales créent un effet graphique qui valorise l\'ensemble de la pièce.',
+    detail: 'Habillage mural + meuble TV · Noyer massif · Pose incluse',
+    price: 'Sur devis (selon surface)',
+    blend: false
+  },
+  {
+    id: 9, name: 'Cuisine Prestige', category: 'cuisine', catLabel: 'Cuisine',
+    img: 'noyer/img/cuisine-prestige.png',
+    alt: 'Cuisine complète en noyer massif avec plan de travail en marbre blanc et îlot central',
+    desc: 'Cuisine complète en noyer massif aux nuances brûlées, avec plan de travail et îlot central en marbre blanc veiné. Conception sur mesure adaptée à votre espace. Électroménager non inclus.',
+    detail: 'Noyer massif · Marbre blanc · Plan + îlot · Sur mesure',
+    price: 'Sur devis',
+    blend: false
+  },
+  {
+    id: 10, name: 'Lit Scultura', category: 'chambre', catLabel: 'Chambre',
+    img: 'noyer/img/lit-scultura.png',
+    alt: 'Lit Scultura en noyer massif avec tête de lit sculptée en cubes 3D et tables de chevet assorties',
+    desc: 'Chef-d\'œuvre de notre atelier : la tête de lit en cubes sculptés à la main crée un panneau mural d\'une rare beauté. Le cadre bas en noyer massif avec tiroirs intégrés maximise le rangement. Tables de chevet assorties.',
+    detail: 'Noyer massif sculpté · Tiroirs intégrés · Tables de chevet incluses · Standard ou sur mesure',
+    price: 'Sur devis',
+    blend: false
+  },
+  {
+    id: 11, name: 'Buffet Prestige Arrondi', category: 'buffets', catLabel: 'Buffets & Rangements',
+    img: 'noyer/img/buffet-arrondi.png',
+    alt: 'Buffet enfilade en noyer massif avec forme arrondie et façades courbes sur pieds',
+    desc: 'Buffet aux façades incurvées et aux angles arrondis — une silhouette élégante et organique. La texture du noyer ressort magnifiquement sur cette pièce qui peut habiller un couloir ou une salle à manger.',
+    detail: '3 portes · Noyer massif · Façades courbes · Sur pieds noyer',
+    price: 'À partir de 9 500 DH',
+    blend: true
+  },
+  {
+    id: 12, name: 'Portes Chevron', category: 'portes', catLabel: 'Portes Intérieures',
+    img: 'noyer/img/portes-chevron.png',
+    alt: 'Deux portes intérieures en noyer avec motif chevron en lamelles en bois de noyer',
+    desc: 'Portes intérieures en noyer massif au motif chevron composé de lamelles posées en chevrons. Un motif géométrique fort qui transforme vos portes en éléments architecturaux. Poignée noire mate.',
+    detail: 'Noyer massif · Motif chevron · Poignée noire · Dimensions standard ou sur mesure',
+    price: 'À partir de 4 500 DH / porte',
+    blend: true
+  },
+];
+
+/* ─────────────────── RENDER PRODUCTS ─────────────────── */
+function renderProducts(filter = 'all') {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = products.map(p => `
+    <article
+      class="product-card${p.blend ? ' product-card--blend' : ''} reveal"
+      role="listitem"
+      tabindex="0"
+      data-category="${p.category}"
+      aria-label="${p.name} — ${p.catLabel} — ${p.price}"
+      onclick="openLightbox(${p.id})"
+      onkeydown="if(event.key==='Enter')openLightbox(${p.id})"
+    >
+      <div class="product-img-wrap">
+        <img
+          src="${p.img}"
+          alt="${p.alt}"
+          class="product-img"
+          loading="lazy"
+          width="600" height="450"
+        >
+        <button class="product-quick" onclick="event.stopPropagation();openLightbox(${p.id})" aria-label="Voir ${p.name}">
+          Voir les détails
+        </button>
+      </div>
+      <div class="product-info">
+        <div class="product-cat">${p.catLabel}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-detail">${p.detail.split('·').slice(0,2).join('·')}</div>
+        <div class="product-price">${p.price}</div>
+      </div>
+    </article>
+  `).join('');
+
+  // Apply filter visibility
+  if (filter !== 'all') {
+    grid.querySelectorAll('.product-card').forEach(card => {
+      if (card.dataset.category !== filter) card.classList.add('hidden');
+    });
+  }
+
+  observeReveal();
+}
+
+/* ─────────────────── FILTER ─────────────────── */
+let activeFilter = 'all';
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.filter;
+    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      const match = activeFilter === 'all' || card.dataset.category === activeFilter;
+      card.classList.toggle('hidden', !match);
+    });
+  });
+});
+
+function filterAndScroll(filter) {
+  document.getElementById('produits').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => {
+    const btn = document.querySelector(`.filter-btn[data-filter="${filter}"]`);
+    if (btn) btn.click();
+  }, 600);
+}
+
+/* ─────────────────── LIGHTBOX ─────────────────── */
+let lastFocused = null;
+
+function openLightbox(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  lastFocused = document.activeElement;
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  img.src = p.img;
+  img.alt = p.alt;
+  img.className = 'lightbox-img' + (p.blend ? ' lightbox-img--blend' : '');
+  document.getElementById('lightboxCat').textContent = p.catLabel;
+  document.getElementById('lightboxName').textContent = p.name;
+  document.getElementById('lightboxDesc').textContent = p.desc;
+  document.getElementById('lightboxDetail').textContent = p.detail;
+  document.getElementById('lightboxPrice').textContent = p.price;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('lightboxClose').focus();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  if (lastFocused) lastFocused.focus();
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+document.getElementById('lightbox').addEventListener('click', e => { if (e.target === e.currentTarget) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ─────────────────── NAV SCROLL ─────────────────── */
+const nav = document.getElementById('mainNav');
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
+/* ─────────────────── MOBILE DRAWER ─────────────────── */
+let drawerOpen = false;
+const burger = document.getElementById('navBurger');
+const drawer = document.getElementById('mobileDrawer');
+const overlay = document.getElementById('drawerOverlay');
+
+function toggleDrawer() {
+  drawerOpen = !drawerOpen;
+  drawer.classList.toggle('open', drawerOpen);
+  overlay.classList.toggle('open', drawerOpen);
+  burger.setAttribute('aria-expanded', String(drawerOpen));
+  drawer.setAttribute('aria-hidden', String(!drawerOpen));
+  document.body.style.overflow = drawerOpen ? 'hidden' : '';
+}
+burger.addEventListener('click', toggleDrawer);
+overlay.addEventListener('click', toggleDrawer);
+drawer.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', () => { if (drawerOpen) toggleDrawer(); }));
+
+/* ─────────────────── SCROLL REVEAL ─────────────────── */
+function observeReveal() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+    if (!el.classList.contains('visible')) io.observe(el);
+  });
+}
+
+/* ─────────────────── CONTACT FORM ─────────────────── */
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  let valid = true;
+  const checks = [
+    { id:'cf-nom',     errId:'err-nom',     test: v => v.trim().length > 1 },
+    { id:'cf-tel',     errId:'err-tel',     test: v => v.trim().length > 5 },
+    { id:'cf-message', errId:'err-message', test: v => v.trim().length > 5 },
+  ];
+  checks.forEach(({ id, errId, test }) => {
+    const el = document.getElementById(id);
+    const err = document.getElementById(errId);
+    if (!test(el.value)) { err.classList.add('visible'); el.setAttribute('aria-invalid','true'); valid = false; }
+    else { err.classList.remove('visible'); el.removeAttribute('aria-invalid'); }
+  });
+  if (!valid) { form.querySelector('[aria-invalid]')?.focus(); return; }
+  const btn = document.getElementById('formSubmit');
+  btn.textContent = 'Envoi en cours…'; btn.disabled = true;
+  setTimeout(() => {
+    form.reset(); btn.textContent = 'Envoyer le message'; btn.disabled = false;
+    showToast('Message envoyé ! Nous vous répondrons dans les plus brefs délais.');
+  }, 1600);
+});
+
+/* ─────────────────── TOAST ─────────────────── */
+function showToast(msg) {
+  const c = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg; t.addEventListener('click', () => t.remove());
+  c.appendChild(t);
+  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('show')));
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 320); }, 5000);
+}
+
+/* ─────────────────── INIT ─────────────────── */
+renderProducts();
+observeReveal();
+</script>
+</body>
+</html>
